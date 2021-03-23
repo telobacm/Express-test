@@ -1,23 +1,20 @@
+const fs = require("fs-extra");
+const path = require("path");
+const users = require("../db/users.json");
+
+//POST -> CREATE
 exports.createProduct = (req, res, next) => {
-  res.json({
-    message: "Create Product Success",
-    data: {
-      id: 1,
-      name: "Sari Gundam",
-      price: 8000,
-    },
-  });
+  // console.log("request:", req.body);
+  const { id } = req.params;
+  console.log(id);
+  users.push(req.body, id);
+  // fs.writeJSON(path.join(__dirname, "../db/users.json"), users);
+  // res.json({ users });
   next();
 };
 
+//GET -> READ
 exports.getAllProducts = (req, res, next) => {
-  res.json({
-    message: "Get All Products Success",
-    data: {
-      id: 1,
-      name: "Sari Gundam",
-      price: 8000,
-    },
-  });
+  res.json({ users });
   next();
 };
