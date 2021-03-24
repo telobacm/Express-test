@@ -6,11 +6,7 @@ const fs = require("fs-extra");
 const path = require("path");
 
 // CREATE -> POST
-router.post("/users", (req, res) => {
-  users.push(req.body);
-  fs.writeJSON(path.join(__dirname, "../db/users.json"), users);
-  res.json({ users });
-});
+router.post("/users", productsController.createProduct);
 
 // READ -> GET
 router.get("/users", productsController.getAllProducts);
