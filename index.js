@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const productRoutes = require("./src/routes/products");
+// const error = require("");
 
 const app = express();
-const productRoutes = require("./src/routes/products");
 
 app.use(cors());
 app.use(bodyParser.json());
