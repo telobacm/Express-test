@@ -2,15 +2,21 @@ const fs = require("fs-extra");
 const path = require("path");
 const users = require("../db/users.json");
 const db = require("../db/demamberdarah.json");
+var createError = require("http-errors");
 
 const namaFile = path.join(__dirname, "../db/demamberdarah.json");
 
 //POST -> CREATE
 exports.createProduct = (req, res) => {
   let body = db[req.params.table];
-  console.log(body);
+  // console.log(body);
+  const sorted = db[req.params.table].sort((a, b) => {
+    return a.id - b.id;
+  });
+  const newId = sorted[sorted.length - 1] ? sorted[sorted.length - 1].id + 1 : 1;
+  // console.log(newId);
   if (body) {
-    body.push(req.body);
+    body.push({ ...req.body, id: newId });
   } else {
     body = [req.body];
   }
@@ -23,22 +29,29 @@ exports.createProduct = (req, res) => {
 exports.getAllProducts = (req, res) => {
   // console.log(req.params.table);
   const table = db[req.params.table];
-  if (table == undefined) {
-    res.status(500).send("tabel tidak ditemukan");
+  if (table !== undefined) {
+    res.json(table);
+  } else {
+    const err = createError(404, "Data mboten enten");
+    res.status(err.status).json(err.message);
   }
-  res.json(table);
 };
 
 //PUT -> UPDATE
 exports.updateProduct = (req, res) => {
-  // // console.log("param id:", req.params.id);
+  // console.log("param table:", req.params.table);
+  table = req.params.table;
+  // console.log("table:", db[table]);
   data = req.body;
-  const index = db[req.params.table].findIndex((v) => v.id == req.params.id);
-  // // console.log("index", index);
+  const index = db[table].findIndex((v) => v.id == req.params.id);
+  console.log("index", index);
   if (index > -1) {
-    users[index] = { ...users[index], ...data };
-    fs.writeJson(namaFile, users);
-    res.json(db);
+    table[index] = { ...table[index], ...data };
+    fs.writeJson(namaFile, table[index]);
+    res.json(db[table]);
+  } else {
+    const err = createError(404, "id tidak ditemukan");
+    res.status(err.status).json(err.message);
   }
 };
 
@@ -51,5 +64,8 @@ exports.deleteProduct = (req, res) => {
     const datas = Object.assign(db, { [req.params.table]: payload });
     fs.writeJson(namaFile, db);
     res.json(datas);
+  } else {
+    const err = createError(404, "id tidak ditemukan");
+    res.status(err.status).json(err.message);
   }
 };

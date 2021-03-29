@@ -1,1 +1,25 @@
-{"user":[{"id":1,"nama":"jbahv","email":"jhdir@gmoi.com","alamat":"Pathi"},{"id":2,"nama":"jbahv","email":"jhdir@gmoi.com","alamat":"Pathi"}]}
+{
+  "inti": [
+    { "id": 1, "nama": "M Kadir", "email": "mkdir@gmoi.com", "alamat": "Pati" },
+    { "id": 3, "nama": "DOM Toretto", "email": "get.element@gmoi.com", "alamat": "Wonogiri" },
+    { "id": 4, "nama": "Izul", "email": "telobacm@gmoi.com", "alamat": "Isekai" },
+    { "id": 5, "nama": "Tuba Pajupi", "email": "fazufi@gmoi.com", "alamat": "United Bike" },
+    { "id": 6, "nama": "Strange Fighter", "email": "drSetren@gmoi.com", "alamat": "Mars" },
+    { "id": 7, "nama": "X Æ A-12 Musk", "email": "XavierMusk@gmoi.com", "alamat": "Los Ambles" },
+    { "id": 8, "nama": "Dadang", "email": "DewaKipas@gmoi.com", "alamat": "Semarang" },
+    { "id": 10, "nama": "Udin", "email": "BetulUdin@gmoi.com", "alamat": "Kebumen" },
+    { "nama": "Kamil", "email": "kamil@gmoi.com", "alamat": "Indramayu", "id": 11 }
+  ],
+  "cadangan": [
+    { "id": 1, "nama": "Mamat", "email": "mmt1mtr13rb@gmoi.com", "alamat": "Sleman" },
+    { "id": 2, "nama": "Slamet", "email": "congratulation@gmoi.com", "alamat": "Bantul" },
+    { "id": 3, "nama": "Markonah", "email": "markonahaja@gmoi.com", "alamat": "Magelang" },
+    { "id": 4, "nama": "Gogon", "email": "Joni@gmoi.com", "alamat": "Magetan" },
+    { "id": 5, "nama": "Sarno", "email": "sulawesi@gmoi.com", "alamat": "Maros" },
+    { "id": 6, "nama": "Pandji", "email": "petualang@gmoi.com", "alamat": "Bandung" },
+    { "id": 7, "nama": "Amar", "email": "marAmar@gmoi.com", "alamat": "Klaten" },
+    { "id": 8, "nama": "Amir", "email": "mirAmir@gmoi.com", "alamat": "Boyolali" },
+    { "id": 9, "nama": "Bagas", "email": "bagas$55@gmoi.com", "alamat": "Jember" },
+    { "id": 10, "nama": "Bagong", "email": "membagongkan@gmoi.com", "alamat": "Blora" }
+  ]
+}
