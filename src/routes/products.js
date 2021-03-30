@@ -1,18 +1,19 @@
 const express = require("express");
 const router = express.Router();
+const { checkAuth } = require("./chkAuth");
 const productsController = require("../controllers/products");
 
 // CREATE -> POST
-router.post("/:table", productsController.createProduct);
+router.post("/:table", checkAuth, productsController.createProduct);
 
 // READ -> GET
-router.get("/:table", productsController.getAllProducts);
+router.get("/:table", checkAuth, productsController.getAllProducts);
 
 //PUT -> UPDATE
-router.put("/:table", productsController.updateProduct);
-router.put("/:table/:id", productsController.updateProduct);
+router.put("/:table", checkAuth, productsController.updateProduct);
+router.put("/:table/:id", checkAuth, productsController.updateProduct);
 
 //DELETE -> DELETE
-router.delete("/:table/:id", productsController.deleteProduct);
+router.delete("/:table/:id", checkAuth, productsController.deleteProduct);
 
 module.exports = router;

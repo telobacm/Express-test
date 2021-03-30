@@ -1,8 +1,8 @@
 const fs = require("fs-extra");
 const path = require("path");
-const users = require("../db/users.json");
+// const users = require("../db/users.json");
 const db = require("../db/demamberdarah.json");
-var createError = require("http-errors");
+const createError = require("http-errors");
 
 const namaFile = path.join(__dirname, "../db/demamberdarah.json");
 
@@ -40,14 +40,15 @@ exports.getAllProducts = (req, res) => {
 //PUT -> UPDATE
 exports.updateProduct = (req, res) => {
   // console.log("param table:", req.params.table);
-  table = req.params.table;
+  const table = req.params.table;
+  const data = db[table];
   // console.log("table:", db[table]);
-  data = req.body;
-  const index = db[table].findIndex((v) => v.id == req.params.id);
-  console.log("index", index);
+  const put = req.body;
+  const index = data.findIndex((v) => v.id == req.params.id);
+  // console.log("index", index, "table[index]:", data[index]);
   if (index > -1) {
-    table[index] = { ...table[index], ...data };
-    fs.writeJson(namaFile, table[index]);
+    data[index] = { ...data[index], ...put };
+    fs.writeJson(namaFile, db);
     res.json(db[table]);
   } else {
     const err = createError(404, "id tidak ditemukan");
